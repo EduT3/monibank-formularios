@@ -77,18 +77,17 @@
           />
           <h2 class="formulario__titulo-texto">Reconhecimento facial</h2>
           <p class="formulario__texto">
-            Clique no quadro abaixo para capturarmos uma imagem sua!
+            Demonstração opcional da câmera, sem reconhecimento biométrico. A foto não será salva nem enviada.
           </p>
 
-          <img
+          <button type="button" data-video-botao aria-label="Ativar câmera" class="camera__iniciar"><img
             src="../img/reconhecimento.png"
             alt="Rosto com olhos e um sorriso dentro de um enquadramento"
-            data-video-botao
             class="formulario__imagem"
-          />
+          /></button><p id="status-camera" role="status"></p>
 
           <div class="formulario__camera" data-camera>
-            <video width="320" height="240" autoplay data-video></video>
+            <video width="320" height="240" autoplay muted playsinline data-video></video>
             <button class="camera__botao" data-tirar-foto>Tirar foto</button>
           </div>
 
@@ -105,7 +104,7 @@
               href="#"
               class="formulario__botao formulario__botao--ancora"
               data-enviar
-              >Quero abrir minha conta!</a
+              >Concluir demonstração</a
             >
           </div>
         </div>

@@ -160,3 +160,11 @@
         margin: 2em;
     }
 }
+.aviso-demo, #status-camera { padding: 1rem; line-height: 1.5; background: #e8f4ff; color: #002f52; }
+.camera__iniciar { background: none; border: 2px solid #005b96; border-radius: .75rem; cursor: pointer; max-width: 100%; }
+:focus-visible { outline: 3px solid #005b96; outline-offset: 4px; }
+video, canvas { max-width: 100%; height: auto; }
+input { max-width: 100%; box-sizing: border-box; }
+@media (max-width: 700px) { .formulario { width: auto; margin: 1rem; } .formulario__container { width: 100%; box-sizing: border-box; padding: 1rem; } .cabecalho { flex-wrap: wrap; gap: 1rem; } .cabecalho-lista { flex-wrap: wrap; gap: 1rem; } }
+
+@media (max-width: 700px) { .container { margin: 1rem; } .banner__titulo { width: auto; padding: 1rem; font-size: 1.5rem; } }
