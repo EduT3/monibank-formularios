@@ -5,20 +5,15 @@ const formulario = document.querySelector("[data-formulario]");
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
-  const listaResposta = {
-    nome: e.target.elements["nome"].value,
-    email: e.target.elements["email"].value,
-    rg: e.target.elements["rg"].value,
-    cpf: e.target.elements["cpf"].value,
-    aniversario: e.target.elements["aniversario"].value,
-  };
-  localStorage.setItem("cadastro", JSON.stringify(listaResposta));
+  camposDoFormulario.forEach(verificaCampo);
+  if (!formulario.reportValidity()) return;
+  /* Dados da demonstração não são persistidos. */
   window.location.href = "./abrir-conta-form-2.html";
 });
 
 camposDoFormulario.forEach((campo) => {
   campo.addEventListener("blur", () => verificaCampo(campo));
-  campo.addEventListener("invalid", (evento) => evento.preventDefault());
+  campo.addEventListener("input", () => verificaCampo(campo));
 });
 
 const tiposDeErro = [
@@ -48,7 +43,7 @@ const mensagens = {
   cpf: {
     valueMissing: "O campo de CPF não pode estar vazio.",
     patternMismatch: "Por favor, preencha um CPF válido.",
-    customError: "O CPF digitado não existe.",
+    customError: "O formato ou os dígitos verificadores do CPF são inválidos.",
     tooShort: "O campo de CPF não tem caractéres suficientes.",
   },
   aniversario: {
@@ -73,15 +68,17 @@ function verificaCampo(campo) {
   tiposDeErro.forEach((erro) => {
     if (campo.validity[erro]) {
       mensagem = mensagens[campo.name][erro];
-      console.log(mensagem);
+
     }
   });
   const mensagemErro = campo.parentNode.querySelector(".mensagem-erro");
   const validadorDeInput = campo.checkValidity();
 
   if (!validadorDeInput) {
-    mensagemErro.textContent = mensagem;
+    if (mensagemErro) mensagemErro.textContent = mensagem || "Confira este campo.";
+    campo.setAttribute("aria-invalid", "true");
   } else {
-    mensagemErro.textContent = "";
+    if (mensagemErro) mensagemErro.textContent = "";
+    campo.removeAttribute("aria-invalid");
   }
 }

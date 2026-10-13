@@ -1,6 +1,7 @@
 export default function ehUmCPF(campo) {
   const cpf = campo.value.replace(/\.|-/g, "");
   if (
+    !/^\d{11}$/.test(cpf) ||
     validaNumerosRepetidos(cpf) ||
     validaPrimeiroDigito(cpf) ||
     validaSegundoDigito(cpf)
