@@ -21,6 +21,7 @@ Abra http://localhost:8000/ e navegue para o formulário. Use exclusivamente dad
 - Validação de CPF com formato e dígitos verificadores; isso não verifica existência cadastral.
 - Erros de formulário e foco visível; adaptação do formulário a telas pequenas.
 - Câmera corrige controles interrompidos, trata recusa de permissão e encerra as trilhas após captura ou saída.
+- A etapa da câmera pode ser pulada a qualquer momento, inclusive sem suporte ou permissão. Concluir encerra a câmera e descarta solicitações que responderem depois da saída.
 - Dados pessoais e foto não são mais persistidos. A prévia de câmera existe apenas na página.
 
 ## Testes
